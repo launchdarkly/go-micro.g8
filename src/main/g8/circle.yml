@@ -1,0 +1,20 @@
+dependencies:
+  pre:
+    - rm -rf ~/.go_workspace/src/github.com/$github_username$/$name$
+    - mkdir -p ~/.go_workspace/src/github.com/$github_username$/
+    - ln -s ~/$name$ ~/.go_workspace/src/github.com/$github_username$/$name$
+    - go get github.com/tools/godep
+  override:
+    - godep go build
+  post:
+    - ./scripts/package.sh
+
+test:
+  override:
+    - godep go test
+
+deployment:
+  s3:
+    branch: /.*/
+    commands:
+      - ./scripts/upload_to_s3.sh
