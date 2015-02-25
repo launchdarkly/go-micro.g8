@@ -4,8 +4,8 @@ import (
 	"fmt"
 )
 
-var VERSION = "DEV"
+var Version = "DEV"
 
 func main() {
-	fmt.Println("Starting $name$ version " + VERSION)
+	fmt.Println("Starting $name$ version " + Version)
 }
